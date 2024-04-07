@@ -1,1 +1,2 @@
-const test = () => console.log("hello world");
+export * from "./types";
+export * from "./is";
