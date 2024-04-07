@@ -1,16 +1,26 @@
 {
-  "name": "@ic/ts-utils",
+  "name": "@illlia/ts-utils",
   "version": "0.0.1",
   "description": "TS utils",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/illiaChaban/ts-utils"
+  },
+  "keywords": [
+    "typescript",
+    "ts",
+    "functional",
+    "fp"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "illia.chaban.8@gmail.com",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.12.5",
     "typescript": "^5.4.4"
