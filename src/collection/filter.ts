@@ -1,9 +1,7 @@
 import { isArray } from "../is";
 import { pipe } from "../pipe";
-import { Arr, Key, NoInfer, Obj, Value } from "../types";
+import { Arr, Collection, Key, NoInfer, Obj, Value } from "../types";
 import { entries, fromEntries } from "./entries";
-
-type Collection<T = any> = Obj<T> | Arr<T>;
 
 type Filtered<T extends Collection, SubT = any> = T extends Obj
   ? { [K in keyof T as T[K] extends SubT ? K : never]: T[K] }
@@ -52,26 +50,22 @@ export function filter(...args: any[]) {
   return (collection: Collection) => filter(collection, args[0]);
 }
 
-// const arr = [1, 2, 3] as const;
+// const arr = [1, "hi", 3] as const;
 // const obj = { one: 1, two: "hi" } as const;
 
-// const v = filter(arr, (v, i) => true);
-// const v1 = pipe(
-//   arr,
-//   filter((v, i, arr) => true),
-//   (v) => v
-// );
+// const v = filter(arr, isNumber);
+// const v1 = pipe(arr, filter(isString), (v) => v);
 
-// const v2 = filter(obj, (v, i) => true);
+// const v2 = filter(obj, isString);
 // const v3 = pipe(
 //   obj,
 //   (v) => v,
 //   filter(isString),
-//   v => v,
+//   (v) => v
 // );
 // const v4 = pipe(
 //   obj,
 //   (v) => v,
 //   filter(isNumber),
-//   v => v,
+//   (v) => v
 // );

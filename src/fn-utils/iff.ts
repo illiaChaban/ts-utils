@@ -1,5 +1,5 @@
 import { FalsyValues, NoInfer } from "../types";
-import { pass } from "./tap";
+import { thru } from "./tap";
 
 export function iif<T, SubT extends T, A, B>(
   checkCondition: (v: NoInfer<T>) => v is SubT,
@@ -28,8 +28,8 @@ export function iif<T, Y>(
 ): (v: T) => T | Y;
 
 export function iif(...args: any[]) {
-  if (args.length === 1) return args[0] ?? pass;
-  const [checkCondition, doThis, doThat = pass] = args;
+  if (args.length === 1) return args[0] ?? thru;
+  const [checkCondition, doThis, doThat = thru] = args;
   return (v: any) => (checkCondition(v) ? doThis(v) : doThat(v));
 }
 

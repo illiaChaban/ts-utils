@@ -6,4 +6,6 @@ export const tap =
   };
 
 export const noop = () => {};
-export const pass = <T>(v: T) => v;
+export const thru = <T>(v: T) => v;
+
+export const log = <T>(msg: string) => tap<T>((v) => console.log(msg, v));

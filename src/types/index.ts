@@ -1,5 +1,5 @@
 export * from "./no-infer";
-export * from "./object";
+export * from "./collection";
 
 export type Nil = null | undefined;
 
