@@ -1,5 +1,6 @@
 import { isArray, isObject, isString } from "../is";
 import { Collection } from "../types";
+import { panic } from "../utils";
 import { values } from "./entries";
 
 export function size(
@@ -11,7 +12,7 @@ export function size(
     ? values(v).length
     : v instanceof Map || v instanceof Set
     ? v.size
-    : 0;
+    : panic("size -> Unknown value type: " + typeof v);
 }
 
 // const x = [1,2,3] as const

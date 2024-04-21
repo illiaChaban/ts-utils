@@ -17,3 +17,7 @@ export const assertValue = <T>(
   assert(value, error);
   return value as any;
 };
+
+export const panic = (msg = "Panic: unknown error") => {
+  throw new Error(msg);
+};

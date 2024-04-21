@@ -1,6 +1,8 @@
 export * from "./each";
 export * from "./entries";
+export * from "./every";
 export * from "./filter";
+export * from "./join";
 export * from "./key-by";
 export * from "./map";
 export * from "./omit";
@@ -8,4 +10,5 @@ export * from "./pick";
 export * from "./reduce";
 export * from "./remove";
 export * from "./size";
+export * from "./some";
 export * from "./update-entries";

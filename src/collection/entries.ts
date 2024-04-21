@@ -1,6 +1,5 @@
-import { flow, pipe } from "../fn-utils";
-import { Entry, Key, Obj, Value } from "../types";
-import { map } from "./map";
+import { isArray } from "../is";
+import { Collection, Entry, Key, Obj, Value } from "../types";
 
 export const values = Object.values as {
   <T extends Obj>(obj: T): Value<T>[];
@@ -10,9 +9,12 @@ export const keys = Object.keys as {
   <T extends Obj>(obj: T): Key<T>[];
 };
 
-export const entries = Object.entries as {
-  <T extends Obj>(obj: T): Entry<T>[];
-};
+export const entries = <T extends Collection>(
+  collection: Collection
+): Entry<T>[] =>
+  isArray(collection)
+    ? ([...collection.entries()] as any)
+    : Object.entries(collection);
 
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };

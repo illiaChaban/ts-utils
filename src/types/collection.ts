@@ -12,9 +12,11 @@ export type Key<T> = T extends readonly any[]
   ? K
   : never;
 
-export type Entry<T extends Record<any, any>> = {
-  [K in keyof T]: [K, T[K]];
-}[keyof T];
+export type Entry<T extends Collection> = T extends Arr<infer Y>
+  ? [number, Y]
+  : {
+      [K in keyof T]: [K, T[K]];
+    }[keyof T];
 
 /** T[] extends readonly T[] */
 export type Arr<T = unknown> = readonly T[];
