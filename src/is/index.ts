@@ -33,6 +33,10 @@ export const isString = <T>(v: T): v is ExtractIs<T, string> => {
   return typeof v === "string";
 };
 
+export const isDate = <T>(v: T): v is ExtractIs<T, Date> => {
+  return v instanceof Date && !isNaN(v as any);
+};
+
 // const v = 5 as 5 | "hello";
 // if (isString(v)) {
 //   v;

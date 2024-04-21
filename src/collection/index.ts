@@ -14,7 +14,8 @@ export * from "./remove";
 export * from "./size";
 export * from "./some";
 export * from "./update-entries";
-// at, sort, groupBy, extract, exclude
+export * from "./sort";
+// at, groupBy, extract, exclude
 
 export { default as difference } from "lodash/fp/difference";
 export { default as intersection } from "lodash/fp/intersection";
