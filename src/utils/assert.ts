@@ -1,4 +1,4 @@
-import { Truthy } from "./types";
+import { Truthy } from "../types";
 
 export function assert(
   value: unknown,

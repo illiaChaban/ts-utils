@@ -7,6 +7,17 @@ export type FalsyValues = "" | null | undefined | 0 | false;
 export type Falsy<T> = Extract<T, FalsyValues>;
 export type Truthy<T> = Exclude<T, FalsyValues>;
 
+export type Primitive =
+  | null
+  | undefined
+  | string
+  | number
+  | boolean
+  | symbol
+  | bigint;
+
+export type OmitKnown<T, K extends keyof T> = Omit<T, K>;
+
 // export type Fn<P = any, R = any> = (v: P) => R;
 
 // TODO: type MaybeReadonly

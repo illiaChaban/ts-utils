@@ -16,7 +16,8 @@ export type Entry<T extends Record<any, any>> = {
   [K in keyof T]: [K, T[K]];
 }[keyof T];
 
-export type Arr<T = any> = T[] | readonly T[];
+/** T[] extends readonly T[] */
+export type Arr<T = unknown> = readonly T[];
 
 /**
  * string for keys and unknown for values is used instead of any,any due to weird assignability types

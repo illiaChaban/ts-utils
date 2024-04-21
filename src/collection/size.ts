@@ -1,10 +1,17 @@
-import { isObject } from "../is";
+import { isArray, isObject, isString } from "../is";
+import { Collection } from "../types";
 import { values } from "./entries";
 
-export function size(obj: Record<any, any>): number;
-export function size<T extends { length: number }>(v: T): T["length"];
-export function size(v: any) {
-  return isObject(v) ? values(v).length : v.length ?? 0;
+export function size(
+  v: Collection | Map<any, any> | Set<any> | string
+): number {
+  return isArray(v) || isString(v)
+    ? v.length
+    : isObject(v)
+    ? values(v).length
+    : v instanceof Map || v instanceof Set
+    ? v.size
+    : 0;
 }
 
 // const x = [1,2,3] as const

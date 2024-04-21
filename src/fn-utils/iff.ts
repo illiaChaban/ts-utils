@@ -16,7 +16,7 @@ export function iif<T, A, B>(
 export function iif<T, SubT extends T, Y>(
   checkCondition: (v: NoInfer<T>) => v is SubT,
   doThis: (v: SubT) => Y
-): (v: T) => T | Y;
+): (v: T) => Y | Exclude<T, SubT>;
 
 export function iif<T, Y>(
   checkCondition: (v: NoInfer<T>) => boolean,
@@ -35,11 +35,10 @@ export function iif(...args: any[]) {
 
 // const toString = (v: unknown): string => v + "";
 // const toBoolean = (v: unknown): boolean => !v;
-// const toNumber = (v: unknown): number => (v as any)
+// const toNumber = (v: unknown): number => v as any;
 
 // const v = 5 as 5 | "hello";
 // const isCondition = () => !Math.random();
-// const x = pipe(
-//   v,
-//   iif(isString, toBoolean, pass)
-// ); // boolean | 5
+// const x = pipe(v, v => v, iif(isString, v => toBoolean(v), thru)); // boolean | 5
+// const x2 = pipe(v , iif(isString, toBoolean))
+// const x3 = pipe(v , v => isString(v) ? toBoolean(v) : v)

@@ -1,3 +1,5 @@
 export * from "./types";
 export * from "./is";
-export * from "./assert";
+export * from "./utils";
+export * from "./collection";
+export * from "./fn-utils";

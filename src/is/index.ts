@@ -1,27 +1,33 @@
-import { Falsy, Truthy, Nil } from "../types";
+import { _ } from "../fn-utils";
+import { Arr, Falsy, Obj, Truthy } from "../types";
+import { is, isNot } from "./is";
+import { ExtractIs } from "./shared";
+
+export * from "./is";
+export * from "./is-empty";
 
 export const isFalsy = <T>(value: T): value is Falsy<T> => !value;
 export const isTruthy = <T>(value: T): value is Truthy<T> => !!value;
 
-export const isNil = <T>(value: T): value is Extract<T, Nil> =>
-  [null, undefined].includes(value as any);
+export const isNil = is(null, undefined);
+export const isValue = isNot(null, undefined);
 
-export const isArray = Array.isArray;
-export const isObject = (v: unknown): v is Record<any, any> => {
+export const isArray = Array.isArray as {
+  <T>(v: T): v is ExtractIs<T, Arr>;
+};
+
+export const isObject = <T>(v: T): v is ExtractIs<T, Obj> => {
   return v !== null && typeof v === "object" && !isArray(v);
 };
-export const isFunction = (v: unknown): v is (...args: any[]) => any => {
+export const isFunction = <T>(
+  v: T
+): v is ExtractIs<T, (...args: any[]) => any> => {
   return typeof v === "function";
 };
 
 export const isNumber = <T>(v: T): v is ExtractIs<T, number> => {
   return typeof v === "number";
 };
-
-// export const isString: {
-//   <T>(v: T): v is Extract<T, string>;
-//   (v: unknown): v is string;
-// } = (v: any): v is string => typeof v === "string";
 
 export const isString = <T>(v: T): v is ExtractIs<T, string> => {
   return typeof v === "string";
@@ -36,19 +42,44 @@ export const isString = <T>(v: T): v is ExtractIs<T, string> => {
 //   v1;
 // }
 
-// type ExtractIs<T, SubType> = T extends SubType
-//   ? T
-//   : SubType extends T
-//   ? SubType
-//   : never;
+// const x = pipe(
+//   "hello" as number | "hello",
+//   iif(isString, (v) => v)
+// );
 
-type ExtractIs<T, SubType> = Extract<T, SubType> extends never
-  ? T extends unknown
-    ? SubType extends T
-      ? SubType
-      : never
-    : never
-  : Extract<T, SubType>;
+// const x = pipe(
+//   {hello: 'world'} as {hello: 'world'} | string[],
+//   iif(isObject, (v) => v)
+// );
 
-// type X = 5 | "hello" extends unknown ? true : false;
-// type X1 = unknown extends 5 | "hello" ? true : false;
+/**
+ * This helps with more precise type inferance for "iif" utility
+ * 
+ * @example 
+ * 
+ *
+  const isString = <T>(v: T): v is ExtractIs<T, string> => {
+    return typeof v === "string";
+  };
+
+  const x = pipe(
+    "hello" as number | "hello",
+    iif(
+      isString, 
+      (v) => v // v is 'hello'
+    )
+  );
+
+  // ------------------------
+  const isString = (v: unknown): v is string => {
+    return typeof v === "string";
+  };
+
+  const x = pipe(
+    "hello" as number | "hello",
+    iif(
+      isString, 
+      (v) => v // v is 'hello' | number
+    )
+  );
+ */

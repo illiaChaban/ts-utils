@@ -1,71 +1,21 @@
-import { isArray } from "../is";
-import { pipe } from "../pipe";
-import { Arr, Collection, Key, NoInfer, Obj, Value } from "../types";
-import { entries, fromEntries } from "./entries";
+export const filter: Filter = (predicate: any) => (array: any) =>
+  array.filter(predicate);
 
-type Filtered<T extends Collection, SubT = any> = T extends Obj
-  ? { [K in keyof T as T[K] extends SubT ? K : never]: T[K] }
-  : T extends Arr<infer V>
-  ? Extract<V, SubT>[]
-  : never;
-
-export function filter<T extends Collection, SubT extends Value<T>>(
-  predicate: (
-    v: NoInfer<Value<T>>,
-    k: NoInfer<Key<T>>,
-    collection: NoInfer<T>
-  ) => v is SubT
-): (collection: T) => Filtered<T, SubT>;
-
-export function filter<T extends Collection>(
-  predicate: (
-    v: NoInfer<Value<T>>,
-    k: NoInfer<Key<T>>,
-    collection: NoInfer<T>
-  ) => boolean
-): (collection: T) => Filtered<T>;
-
-export function filter<T extends Collection, SubT extends Value<T>>(
-  collection: T,
-  predicate: (v: Value<T>, k: Key<T>, collection: T) => v is SubT
-): Filtered<T, SubT>;
-
-export function filter<T extends Collection>(
-  collection: T,
-  predicate: (v: Value<T>, k: Key<T>, collection: T) => boolean
-): Filtered<T>;
-
-export function filter(...args: any[]) {
-  if (args.length === 2) {
-    const [it, predicate] = args;
-    return isArray(it)
-      ? it.filter(predicate)
-      : pipe(
-          it,
-          entries,
-          (v) => v.filter(([key, value]) => predicate(value, key, it)),
-          fromEntries
-        );
-  }
-  return (collection: Collection) => filter(collection, args[0]);
-}
-
-// const arr = [1, "hi", 3] as const;
-// const obj = { one: 1, two: "hi" } as const;
-
-// const v = filter(arr, isNumber);
-// const v1 = pipe(arr, filter(isString), (v) => v);
-
-// const v2 = filter(obj, isString);
-// const v3 = pipe(
-//   obj,
-//   (v) => v,
-//   filter(isString),
-//   (v) => v
-// );
-// const v4 = pipe(
-//   obj,
-//   (v) => v,
-//   filter(isNumber),
-//   (v) => v
-// );
+type Filter = {
+  /**
+   * Returns the elements of an array that meet the condition specified in a callback function.
+   * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.
+   * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.
+   */
+  <T, S extends T>(
+    predicate: (value: T, index: number, array: readonly T[]) => value is S
+  ): (array: readonly T[]) => S[];
+  /**
+   * Returns the elements of an array that meet the condition specified in a callback function.
+   * @param predicate A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.
+   * @param thisArg An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value.
+   */
+  <T>(predicate: (value: T, index: number, array: readonly T[]) => unknown): (
+    array: readonly T[]
+  ) => T[];
+};
