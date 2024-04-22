@@ -1,6 +1,6 @@
 import { isString } from "lodash";
-import { NoInfer } from "../types";
-import { isDate, isNumber } from "../is";
+import { Nil, NoInfer } from "../types";
+import { isDate, isNil, isNumber } from "../is";
 
 /**
  * Sorts an array in place.
@@ -31,30 +31,44 @@ export const sort =
     [...arr].sort(campareFn);
 
 export const compareAny = (a: any, b: any) => {
-  a ??= -Infinity;
-  b ??= -Infinity;
+  if (isNil(a) && isNil(b)) return 0;
+  if (isNil(a)) return 1;
+  if (isNil(b)) return -1;
   return a < b ? -1 : a > b ? 1 : 0;
 };
 
-export const compareNumbers = (a: number, b: number) => a - b;
-export const compareLocaleStrings = (a: string, b: string) =>
-  a.localeCompare(b);
-export const compareDates = (a: Date, b: Date) =>
-  compareNumbers(a.getTime(), b.getTime());
+export const compareNumbers = (a: number | Nil, b: number | Nil) =>
+  (a ?? -Infinity) - (b ?? -Infinity);
 
-export const compareDefault = (
-  a: number | string | Date | unknown,
-  b: number | string | Date | unknown
-): number => {
+export const compareLocaleStrings = (a: string | Nil, b: string | Nil) =>
+  (a ?? "").localeCompare(b ?? "");
+
+export const compareDates = (a: Date | Nil, b: Date | Nil) =>
+  compareNumbers(a?.getTime?.(), b?.getTime?.());
+
+export const compareDefault = (a: unknown, b: unknown): number => {
   if (isDate(a) && isDate(b)) return compareDates(a, b);
   if (isString(a) && isString(b)) return compareLocaleStrings(a, b);
   if (isNumber(a) && isNumber(b)) return compareNumbers(a, b);
   return compareAny(a, b);
 };
 
-/** Flips the sign if you need to sort by desc
+/** Flips the sign if the sort comparison (-1 => 1)
  * @example
- * pipe([1, 3, -5], sort(desc(compareNumbers)) // [3, 1, -5]
+ * pipe(
+ *  [1, 3, -5],
+ *  sort(flow(compareNumbers, desc))
+ * ) // [3, 1, -5]
+ *
+ * pipe([
+ *  {createdAt: 1713746652697, name: 'A'},
+ *  {createdAt: 1713746652690, name: 'B'},
+ * ],
+ * sort((a, b) =>
+ *  flow(compareNumbers, desc)(a.createdAt, b.createdAt)
+ *  || compareLocaleStrings(a.name, b.name)
+ * ),
+ * )
  */
 export const desc = (n: number) => -n;
 
