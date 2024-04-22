@@ -15,7 +15,11 @@ export * from "./size";
 export * from "./some";
 export * from "./update-entries";
 export * from "./sort";
-// at, groupBy, extract, exclude
+export * from "./sort-comparators";
+// at, groupBy, extract, exclude, uniq
+
+export { default as groupBy } from "lodash/fp/groupBy";
+export { default as uniq } from "lodash/fp/uniq";
 
 export { default as difference } from "lodash/fp/difference";
 export { default as intersection } from "lodash/fp/intersection";
