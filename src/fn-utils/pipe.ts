@@ -3,31 +3,33 @@ import { NoInfer } from "../types";
 type UnknownFunction = (...params: unknown[]) => unknown;
 type Fn<A, B> = (this: void, a: NoInfer<A>) => B;
 
-export function flow<A extends unknown[], B>(ab: Fn<A, B>): (...args: A) => B;
+export function flow<A extends unknown[], B>(
+  ab: (this: void, ...args: A) => B
+): (...args: A) => B;
 export function flow<A extends unknown[], B, C>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>
 ): (...args: A) => C;
 export function flow<A extends unknown[], B, C, D>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>
 ): (...args: A) => D;
 export function flow<A extends unknown[], B, C, D, E>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>
 ): (...args: A) => E;
 export function flow<A extends unknown[], B, C, D, E, F>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
   ef: Fn<E, F>
 ): (...args: A) => F;
 export function flow<A extends unknown[], B, C, D, E, F, G>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
@@ -35,7 +37,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G>(
   fg: Fn<F, G>
 ): (...args: A) => G;
 export function flow<A extends unknown[], B, C, D, E, F, G, H>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
@@ -44,7 +46,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G, H>(
   gh: Fn<G, H>
 ): (...args: A) => H;
 export function flow<A extends unknown[], B, C, D, E, F, G, H, I>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
@@ -54,7 +56,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G, H, I>(
   hi: Fn<H, I>
 ): (...args: A) => I;
 export function flow<A extends unknown[], B, C, D, E, F, G, H, I, J>(
-  ab: Fn<A, B>,
+  ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
