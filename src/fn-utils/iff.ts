@@ -39,6 +39,10 @@ export function iif(...args: any[]) {
 
 // const v = 5 as 5 | "hello";
 // const isCondition = () => !Math.random();
-// const x = pipe(v, v => v, iif(isString, v => toBoolean(v), thru)); // boolean | 5
-// const x2 = pipe(v , iif(isString, toBoolean))
-// const x3 = pipe(v , v => isString(v) ? toBoolean(v) : v)
+// const x = pipe(
+//   v,
+//   (v) => v,
+//   iif(isString, (v) => toBoolean(v), thru)
+// ); // boolean | 5
+// const x2 = pipe(v, iif(isString, toBoolean)); // boolean | 5
+// const x3 = pipe(v, (v) => (isString(v) ? toBoolean(v) : v)); // boolean | 5

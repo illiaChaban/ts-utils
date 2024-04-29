@@ -1,4 +1,4 @@
-import { Arr, NoInfer } from "../types";
+import { Arr, NoInfer } from "../../types";
 
 /**
  * Determines whether the specified callback function returns true for any element of an array.

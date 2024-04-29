@@ -1,4 +1,4 @@
-import { NoInfer } from "../types";
+import { NoInfer } from "../../types";
 
 /**
  * Performs the specified action for each element in an array.

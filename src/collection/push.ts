@@ -1,8 +1,10 @@
-import { NoInfer } from "../types";
-import { concat } from "./concat";
+import { Arr, NoInfer } from "../types";
 
 /**
  * Creates a new array with items appended to the end of an array.
  * @param items New elements to add to the array.
  */
-export const push = <T>(...items: NoInfer<T>[]) => concat(items);
+export const push =
+  <T>(...items: NoInfer<T>[]) =>
+  (arr: Arr<T>) =>
+    [...arr, ...items];

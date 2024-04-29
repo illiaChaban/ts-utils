@@ -1,25 +1,27 @@
-export * from "./concat";
-export * from "./each";
+export * from "./prototype-methods/each";
 export * from "./entries";
-export * from "./every";
-export * from "./filter";
-export * from "./join";
+export * from "./prototype-methods/every";
+export * from "./prototype-methods/filter";
+export * from "./prototype-methods/join";
 export * from "./key-by";
-export * from "./map";
+export * from "./merge";
+export * from "./prototype-methods/map";
 export * from "./omit";
 export * from "./pick";
 export * from "./push";
 export * from "./reduce";
 export * from "./remove";
 export * from "./size";
-export * from "./some";
+export * from "./prototype-methods/some";
 export * from "./update-entries";
 export * from "./sort";
 export * from "./sort-comparators";
-// at, groupBy, extract, exclude, uniq
+export * from "./uniq";
+export * from "./extract";
+export * from "./exclude";
+// groupBy
 
 export { default as groupBy } from "lodash/fp/groupBy";
-export { default as uniq } from "lodash/fp/uniq";
 
 export { default as difference } from "lodash/fp/difference";
 export { default as intersection } from "lodash/fp/intersection";

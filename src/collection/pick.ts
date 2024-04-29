@@ -2,7 +2,7 @@ import { isArray } from "../is";
 import { _ } from "../fn-utils";
 import { Obj, Value, Key } from "../types";
 import { entries, fromEntries } from "./entries";
-import { filter } from "./filter";
+import { filter } from "./prototype-methods/filter";
 
 export const pick: PickFn = (keysOrFn: Function | string[]) => (obj: Obj) => {
   const predicate = isArray(keysOrFn)

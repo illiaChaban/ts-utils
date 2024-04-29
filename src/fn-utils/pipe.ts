@@ -75,6 +75,10 @@ export function flow(
 }
 
 export function pipe<const A>(a: A): A;
+export function pipe<const A, B extends A>(
+  a: A,
+  ab: (a: NoInfer<A>) => a is B
+): a is B;
 export function pipe<const A, B>(a: A, ab: Fn<A, B>): B;
 export function pipe<const A, B, C>(a: A, ab: Fn<A, B>, bc: Fn<B, C>): C;
 export function pipe<const A, B, C, D>(
