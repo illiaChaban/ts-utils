@@ -52,7 +52,6 @@ export * from "./extract-exclude";
 // slice
 // reverse
 // toArray?
-// concat?
 // mapValues ?
 
 // simplify API ?
