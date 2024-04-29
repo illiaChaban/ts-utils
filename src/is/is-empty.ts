@@ -1,4 +1,4 @@
-import { size } from "../collection";
+import { size } from "../data";
 import { Collection } from "../types";
 import { ExtractIs } from "./shared";
 
