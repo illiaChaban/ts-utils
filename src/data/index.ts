@@ -1,5 +1,3 @@
-export { default as groupBy } from "lodash/fp/groupBy";
-
 export { default as difference } from "lodash/fp/difference";
 export { default as intersection } from "lodash/fp/intersection";
 export { default as partition } from "lodash/fp/partition";
@@ -46,6 +44,7 @@ export * from "./update-entries";
 export * from "./sort";
 export * from "./uniq";
 export * from "./extract-exclude";
+export * from "./group-by";
 // groupBy
 // find, findLast, findIndex, findLastIndex, indexOf
 // flatMap, flat

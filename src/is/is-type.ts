@@ -41,14 +41,19 @@ export const isValidDate = <T>(v: T): v is ExtractIs<T, Date> => {
   return isDate(v) && !Number.isNaN(v.getTime());
 };
 
-// const v = 5 as 5 | "hello";
-// if (isString(v)) {
-//   v;
-// }
-// const v1 = v as unknown;
-// if (isString(v1)) {
-//   v1;
-// }
+const v = 5 as 5 | "hello";
+if (isString(v)) {
+  v; // 'hello
+} else {
+  v; // 5
+}
+
+// isString(v) ? v : v
+
+const v1 = v as unknown;
+if (isString(v1)) {
+  v1; // string
+}
 
 // const x = pipe(
 //   "hello" as number | "hello",
