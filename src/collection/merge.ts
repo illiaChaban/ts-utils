@@ -1,5 +1,5 @@
 import { isArray } from "../is";
-import { Arr, Obj } from "../types";
+import { Arr, FlattenTuple, Obj, TupleToIntersection } from "../types";
 
 /**
  * Given target & sources arrays, creates a new concatenated array
@@ -20,23 +20,5 @@ type Merge = {
   /** Creates a new concatenated array */
   <T extends Arr, const S extends Arr[]>(...sources: S): (
     target: T
-  ) => Flatten<[T, ...S]>;
+  ) => FlattenTuple<[T, ...S]>;
 };
-
-type TupleToIntersection<T extends any[]> = {
-  [K in keyof T]: (x: T[K]) => void;
-} extends {
-  [K: number]: (x: infer I) => void;
-}
-  ? I
-  : never;
-
-// Takes array of tuples and merges them into one tuple
-type Flatten<T extends readonly any[]> = T extends readonly [
-  infer F,
-  ...infer R
-]
-  ? F extends readonly any[]
-    ? [...Flatten<F>, ...Flatten<R>]
-    : [F, ...Flatten<R>]
-  : [];

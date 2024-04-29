@@ -1,5 +1,5 @@
-import { Arr } from "../../types";
-import { prototypeMethod } from "./internal";
+import { Arr, IsTuple } from "../types";
+import { prototypeMethod } from "./_internal";
 
 /**
  * Takes an integer value and returns the item at that index,
@@ -20,12 +20,6 @@ export const at = prototypeMethod("at") as {
     ? T[Subtract<T["length"], Abs<I>>]
     : T[number] | undefined;
 };
-
-type IsTuple<T> = T extends Arr
-  ? number extends T["length"]
-    ? false
-    : true
-  : false;
 
 type SupportedNegative = -1 | -2 | -3;
 

@@ -1,7 +1,7 @@
 import { isNil } from "lodash";
-import { not } from "../fn-utils";
-import { isValidNumber, isValidDate } from "../is";
-import { Nil } from "../types";
+import { not } from "../../fn-utils";
+import { isValidNumber, isValidDate } from "../../is";
+import { Nil } from "../../types";
 
 export const compareBase = (a: any, b: any) => {
   return a < b ? -1 : a > b ? 1 : 0;

@@ -1,32 +1,8 @@
-export * from "./prototype-methods/each";
-export * from "./entries";
-export * from "./prototype-methods/every";
-export * from "./prototype-methods/filter";
-export * from "./prototype-methods/join";
-export * from "./key-by";
-export * from "./merge";
-export * from "./prototype-methods/map";
-export * from "./omit";
-export * from "./pick";
-export * from "./push";
-export * from "./reduce";
-export * from "./remove";
-export * from "./size";
-export * from "./prototype-methods/some";
-export * from "./update-entries";
-export * from "./sort";
-export * from "./sort-comparators";
-export * from "./uniq";
-export * from "./extract";
-export * from "./exclude";
-// groupBy
-
 export { default as groupBy } from "lodash/fp/groupBy";
 
 export { default as difference } from "lodash/fp/difference";
 export { default as intersection } from "lodash/fp/intersection";
 export { default as partition } from "lodash/fp/partition";
-export { default as includes } from "lodash/fp/includes";
 export { default as find } from "lodash/fp/find";
 export { default as findLast } from "lodash/fp/findLast";
 export { default as findIndex } from "lodash/fp/findIndex";
@@ -52,3 +28,33 @@ export { default as slice } from "lodash/fp/slice";
 export { default as flat } from "lodash/fp/flatten";
 export { default as toUpperCase } from "lodash/fp/toUpper";
 export { default as toLowerCase } from "lodash/fp/toLower";
+
+export * from "./entries";
+export * from "./some-every";
+export * from "./filter-remove";
+export * from "./join-split";
+export * from "./key-by";
+export * from "./merge";
+export * from "./each-map";
+export * from "./pick-omit";
+export * from "./push";
+export * from "./reduce";
+export * from "./filter-remove";
+export * from "./size";
+export * from "./some-every";
+export * from "./update-entries";
+export * from "./sort";
+export * from "./uniq";
+export * from "./extract-exclude";
+// groupBy
+// find, findLast, findIndex, findLastIndex, indexOf
+// flatMap, flat
+// slice
+// reverse
+// toArray?
+// concat?
+// mapValues ?
+
+// simplify API ?
+// _(arr, some(is(element)))  ===
+// _(arr, includes(el)) // includes support string + object

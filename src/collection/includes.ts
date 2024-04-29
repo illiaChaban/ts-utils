@@ -1,5 +1,5 @@
 import { isObject } from "../is";
-import { Arr, Obj } from "../types";
+import { Arr, Obj, ExtractTuple } from "../types";
 
 export const includes = ((searchEntry: any, fromIdx?: number) =>
   (value: string | Arr | Obj) => {
@@ -50,14 +50,6 @@ type Includes = {
     : never;
 };
 
-// Helper type to check if a type Y is contained in tuple T
-type TupleContains<T extends Arr, Y> = Y extends T[number] ? T : never;
-
-// ExtractTuple using the Contains helper
-type ExtractTuple<T extends Arr, Y> = T extends any
-  ? TupleContains<T, Y>
-  : never;
-
 // declare const a: "hello" | "hello world";
 // if (_(a, includes("lo "))) {
 //   a;
@@ -72,8 +64,3 @@ type ExtractTuple<T extends Arr, Y> = T extends any
 // if (_(c, includes({ a: "one" }))) {
 //   c;
 // }
-
-// type B = [1, 2, 3] | ["hi", "hello"];
-
-// // Use the ExtractTuple type to extract the tuple containing 'hi'
-// type C = ExtractTuple<B, "hi">; // ['hi', 'hello']
