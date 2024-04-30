@@ -1,6 +1,4 @@
-import { _ } from "../fn-utils";
-import { is, InferIs } from "./is";
-import { isNumber, isObject } from "./is-type";
+import { isObject } from "./is-type";
 import { ExtractIs } from "./shared";
 
 /** Checks if 'value' partially matches 'shape' object
