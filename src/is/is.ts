@@ -1,8 +1,9 @@
 import { Primitive } from "../types";
+import { ExtractIs } from "./shared";
 
 export const is =
   <const Args extends Primitive[]>(...args: Args) =>
-  <T>(value: T): value is Extract<T, Args[number]> =>
+  <T>(value: T): value is ExtractIs<T, Args[number]> =>
     args.some(sameValueZero(value));
 
 export { is as eq };
@@ -44,3 +45,6 @@ export function sameValueZero(x: unknown) {
     return x === y;
   };
 }
+
+/** Gets the value of type guard */
+export type InferIs<T> = T extends (v: unknown) => v is infer Y ? Y : never;
