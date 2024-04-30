@@ -1,15 +1,16 @@
 import { Primitive } from "../types";
 
-export function is<const Args extends Primitive[]>(...args: Args) {
-  return <T>(value: T): value is Extract<T, Args[number]> =>
+export const is =
+  <const Args extends Primitive[]>(...args: Args) =>
+  <T>(value: T): value is Extract<T, Args[number]> =>
     args.some(sameValueZero(value));
-}
+
 export { is as eq };
 
-export function isNot<const Args extends Primitive[]>(...args: Args) {
-  return <T>(value: T): value is Exclude<T, Args[number]> =>
+export const isNot =
+  <const Args extends Primitive[]>(...args: Args) =>
+  <T>(value: T): value is Exclude<T, Args[number]> =>
     !is(...args)(value);
-}
 
 /**
  * JS comparisons include
@@ -34,7 +35,7 @@ export function isNot<const Args extends Primitive[]>(...args: Args) {
  * null == undefined // true, everything else - false
  * new String('foo') == 'foo // true, everything else - false
  */
-function sameValueZero(x: unknown) {
+export function sameValueZero(x: unknown) {
   return (y: unknown): boolean => {
     if (typeof x === "number" && typeof y === "number") {
       // x and y are equal (may be -0 and 0) or they are both NaN
