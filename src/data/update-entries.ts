@@ -3,7 +3,7 @@ import { flow } from "../fn-utils";
 import { Entry, NoInfer, Obj } from "../types";
 
 export const updateEntries = ((updater) =>
-  flow(entries, updater, fromEntries)) as UpdateEntries;
+  flow(entries, updater as any, fromEntries)) as UpdateEntries;
 
 type UpdateEntries = {
   <T extends Obj, E extends readonly [PropertyKey, any]>(

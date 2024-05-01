@@ -23,26 +23,14 @@ export function iif<T, Y>(
   doThis: (v: NoInfer<T>) => Y
 ): (v: T) => T | Y;
 
+export function iif<T>(maybeDoThis: FalsyValues): (v: T) => T;
+export function iif<T, Y>(maybeDoThis: (v: NoInfer<T>) => Y): (v: T) => Y;
 export function iif<T, Y>(
   maybeDoThis: FalsyValues | ((v: NoInfer<T>) => Y)
 ): (v: T) => T | Y;
 
 export function iif(...args: any[]) {
-  if (args.length === 1) return args[0] ?? thru;
+  if (args.length === 1) return args[0] || thru;
   const [checkCondition, doThis, doThat = thru] = args;
   return (v: any) => (checkCondition(v) ? doThis(v) : doThat(v));
 }
-
-// const toString = (v: unknown): string => v + "";
-// const toBoolean = (v: unknown): boolean => !v;
-// const toNumber = (v: unknown): number => v as any;
-
-// const v = 5 as 5 | "hello";
-// const isCondition = () => !Math.random();
-// const x = pipe(
-//   v,
-//   (v) => v,
-//   iif(isString, (v) => toBoolean(v), thru)
-// ); // boolean | 5
-// const x2 = pipe(v, iif(isString, toBoolean)); // boolean | 5
-// const x3 = pipe(v, (v) => (isString(v) ? toBoolean(v) : v)); // boolean | 5
