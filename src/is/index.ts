@@ -1,4 +1,5 @@
-export * from "./is";
+export * from "./cast-as";
 export * from "./is-empty";
 export * from "./is-type";
-export * from "./cast-as";
+export * from "./is";
+export * from "./matches";

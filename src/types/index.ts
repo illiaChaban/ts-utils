@@ -1,5 +1,5 @@
-export * from "./no-infer";
 export * from "./collection";
+export * from "./no-infer";
 export * from "./tuples";
 
 export type Nil = null | undefined;
@@ -18,7 +18,5 @@ export type Primitive =
   | bigint;
 
 export type OmitKnown<T, K extends keyof T> = Omit<T, K>;
-
-// export type Fn<P = any, R = any> = (v: P) => R;
 
 // TODO: type MaybeReadonly
