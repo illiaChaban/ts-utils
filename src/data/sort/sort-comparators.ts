@@ -1,5 +1,5 @@
 import { not } from "../../fn-utils";
-import { isValidNumber, isValidDate, isNil } from "../../is";
+import { isValidNumber, isValidDate, isNil } from "../../guards";
 import { Nil } from "../../types";
 
 export const compareBase = (a: any, b: any) => {

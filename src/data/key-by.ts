@@ -1,5 +1,5 @@
 import { fromEntries, map } from ".";
-import { isArray } from "../is";
+import { isArray } from "../guards";
 import { flow } from "../fn-utils";
 import { Collection, Key, Value } from "../types";
 

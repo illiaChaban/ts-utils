@@ -1,5 +1,5 @@
 import { _ } from "../fn-utils";
-import { isArray } from "../is";
+import { isArray } from "../guards";
 import { Key, Obj, Value } from "../types";
 import { entries, fromEntries } from "./entries";
 import { filter, remove } from "./filter-remove";

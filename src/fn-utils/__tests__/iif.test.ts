@@ -1,7 +1,7 @@
 import { describe, it } from "vitest";
 import { iif } from "../iff";
 import { pipe } from "../pipe";
-import { isString } from "../../is";
+import { isString } from "../../guards";
 import { thru } from "../tap";
 
 describe(iif.name, () => {

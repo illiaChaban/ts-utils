@@ -1,5 +1,5 @@
 import { _, iif } from "../fn-utils";
-import { as, isString } from "../is";
+import { as, isString } from "../guards";
 import { Arr, NoInfer } from "../types";
 import { each } from "./each-map";
 

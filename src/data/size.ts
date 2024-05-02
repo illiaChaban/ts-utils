@@ -1,4 +1,4 @@
-import { isArray, isObject, isString } from "../is";
+import { isArray, isObject, isString } from "../guards";
 import { Collection } from "../types";
 import { panic } from "../utils";
 import { values } from "./entries";

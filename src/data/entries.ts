@@ -1,4 +1,4 @@
-import { isArray } from "../is";
+import { isArray } from "../guards";
 import { Collection, Entry, Key, Obj, Value } from "../types";
 
 export const values = Object.values as {
