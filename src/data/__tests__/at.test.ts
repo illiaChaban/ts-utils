@@ -4,7 +4,7 @@ import { at } from "../at";
 
 describe(at.name, () => {
   it("should have proper types", () => {
-    _([1, 2, 3], at(2)) satisfies 3;
+    _([1, 2, 3], at(2)) satisfies 4;
     _([1, 2, 3], at(-1)) satisfies 3;
     _([1, 2, 3], at(-2)) satisfies 2;
     _([1, 2, 3], at(0)) satisfies 1;
