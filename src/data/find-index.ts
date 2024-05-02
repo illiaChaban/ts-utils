@@ -1,6 +1,7 @@
 import { Arr, NoInfer } from "../types";
+import { prototypeMethod } from "./_internal";
 
-export const find = propagatePrototypeMethod("find") as {
+export const find = prototypeMethod("find") as {
   /**
    * Returns the value of the first element in the array where predicate is true, and undefined
    * otherwise.
@@ -24,7 +25,7 @@ export const find = propagatePrototypeMethod("find") as {
   ): (value: Arr<T>) => T | undefined;
 };
 
-export const findIndex = propagatePrototypeMethod("findIndex") as {
+export const findIndex = prototypeMethod("findIndex") as {
   /**
    * Returns the index of the first element in the array where predicate is true, and -1
    * otherwise.
@@ -36,7 +37,7 @@ export const findIndex = propagatePrototypeMethod("findIndex") as {
     predicate: (value: NoInfer<T>, index: number, obj: NoInfer<T>[]) => unknown
   ): (value: Arr<T>) => number;
 };
-export const indexOf = propagatePrototypeMethod("indexOf") as {
+export const indexOf = prototypeMethod("indexOf") as {
   /**
    * Returns the index of the first occurrence of a value in an array, or -1 if it is not present.
    * @param searchElement The value to locate in the array.
@@ -44,7 +45,7 @@ export const indexOf = propagatePrototypeMethod("indexOf") as {
    */
   <T>(searchElement: NoInfer<T>, fromIndex?: number): (value: Arr<T>) => number;
 };
-export const lastIndexOf = propagatePrototypeMethod("lastIndexOf") as {
+export const lastIndexOf = prototypeMethod("lastIndexOf") as {
   /**
    * Returns the index of the last occurrence of a specified value in an array, or -1 if it is not present.
    * @param searchElement The value to locate in the array.
