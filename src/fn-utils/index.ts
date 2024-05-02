@@ -5,6 +5,7 @@ export * from "./pipe";
 export * from "./tap";
 export * from "./ticker";
 
-// export { default as throttle } from "lodash/fp/throttle";
-// export { default as memoize } from "lodash/fp/memoize";
-// export { default as debounce } from "lodash/fp/debounce";
+// use "memize" npm package for memoize function which is fast, supports multiple arguments by reference and small
+
+// use "debounce" npm package for debounce
+// use lodash.throttle npm package for throttle
