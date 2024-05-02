@@ -18,7 +18,8 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc --noEmit && vitest run",
-    "testing": "vitest"
+    "testing": "vitest",
+    "push": "npm run test && git push"
   },
   "author": "illia.chaban.8@gmail.com",
   "license": "MIT",

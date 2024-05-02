@@ -1,6 +1,6 @@
-import { describe, expectTypeOf, it } from "vitest";
-import { at } from "../at";
+import { describe, it } from "vitest";
 import { _ } from "../../fn-utils";
+import { at } from "../at";
 
 describe(at.name, () => {
   it("should have proper types", () => {
