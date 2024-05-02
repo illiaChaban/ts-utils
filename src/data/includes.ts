@@ -31,8 +31,6 @@ type Includes = {
    * @param searchElement The element to search for.
    * @param fromIndex The position in this array at which to begin searching for searchElement.
    */
-
-  // Breaking down this into 2 overloads for some reason doesn't work
   <T extends Arr | string, S extends T extends Arr ? T[number] : string>(
     searchElement: S,
     fromIndex?: number
@@ -45,4 +43,14 @@ type Includes = {
     : T extends Arr
     ? ExtractTuple<T, S>
     : never;
+
+  // Breaking down this into 2 overloads for some reason doesn't work
+  // <T extends Arr, S extends T[number]>(searchElement: S, fromIndex?: number): (
+  //   value: T
+  // ) => value is ExtractTuple<T, S>;
+
+  // <T extends string, const S extends string>(
+  //   searchString: S,
+  //   position?: number
+  // ): (value: T & string) => value is Extract<T, `${string}${S}${string}`>;
 };

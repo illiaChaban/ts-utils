@@ -1,31 +1,25 @@
-export { default as difference } from "lodash/fp/difference";
-export { default as intersection } from "lodash/fp/intersection";
+// export { default as difference } from "lodash/fp/difference";
+// export { default as intersection } from "lodash/fp/intersection";
 export { default as partition } from "lodash/fp/partition";
-export { default as find } from "lodash/fp/find";
-export { default as findLast } from "lodash/fp/findLast";
-export { default as findIndex } from "lodash/fp/findIndex";
-export { default as findLastIndex } from "lodash/fp/findLastIndex";
 export { default as reverse } from "lodash/fp/reverse";
-export { default as indexOf } from "lodash/fp/indexOf";
 export { default as flatMap } from "lodash/fp/flatMap";
 export { default as isEqual } from "lodash/fp/isEqual";
 
 export { default as clamp } from "lodash/fp/clamp";
 
-export { default as split } from "lodash/fp/split";
-export { default as trim } from "lodash/fp/trim";
-export { default as trimEnd } from "lodash/fp/trimEnd";
-export { default as trimStart } from "lodash/fp/trimStart";
+// export { default as trim } from "lodash/fp/trim";
+// export { default as trimEnd } from "lodash/fp/trimEnd";
+// export { default as trimStart } from "lodash/fp/trimStart";
 
-export { default as endsWith } from "lodash/fp/endsWith";
-export { default as startsWith } from "lodash/fp/startsWith";
+// export { default as endsWith } from "lodash/fp/endsWith";
+// export { default as startsWith } from "lodash/fp/startsWith";
 
 export { default as slice } from "lodash/fp/slice";
 
 // renames
 export { default as flat } from "lodash/fp/flatten";
-export { default as toUpperCase } from "lodash/fp/toUpper";
-export { default as toLowerCase } from "lodash/fp/toLower";
+// export { default as toUpperCase } from "lodash/fp/toUpper";
+// export { default as toLowerCase } from "lodash/fp/toLower";
 
 export * from "./entries";
 export * from "./some-every";
@@ -45,6 +39,7 @@ export * from "./sort";
 export * from "./uniq";
 export * from "./extract-exclude";
 export * from "./group-by";
+export * from "./find-index";
 // groupBy
 // find, findLast, findIndex, findLastIndex, indexOf
 // flatMap, flat
