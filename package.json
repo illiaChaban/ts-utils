@@ -1,9 +1,9 @@
 {
   "name": "@illlia/ts-utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "TS utils",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -16,11 +16,16 @@
     "fp"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf ./dist && tsc",
     "test": "tsc --noEmit && vitest run",
     "testing": "vitest",
     "push": "npm run test && git push"
   },
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "!src/**/__tests__/**/*"
+  ],
   "author": "illia.chaban.8@gmail.com",
   "license": "MIT",
   "devDependencies": {
