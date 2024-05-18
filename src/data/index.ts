@@ -23,6 +23,7 @@ export * from "./some-every";
 export * from "./string";
 export * from "./uniq";
 export * from "./update-entries";
+export * from "./map-values";
 
 // toArray?
 // mapValues ?
