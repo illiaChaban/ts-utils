@@ -29,4 +29,21 @@ export const toUpperCase = prototypeMethod("toUpperCase");
  */
 export const replace = prototypeMethod("replace");
 /** Replace all instances of a substring in a string, using a regular expression or search string. */
-export const replaceAll = prototypeMethod("replaceAll");
+export const replaceAll = prototypeMethod("replaceAll") as {
+  /**
+   * Replace all instances of a substring in a string, using a regular expression or search string.
+   * @param searchValue A string to search for.
+   * @param replaceValue A string containing the text to replace for every successful match of searchValue in this string.
+   */
+  (searchValue: string | RegExp, replaceValue: string): (v: string) => string;
+
+  /**
+   * Replace all instances of a substring in a string, using a regular expression or search string.
+   * @param searchValue A string to search for.
+   * @param replacer A function that returns the replacement text.
+   */
+  (
+    searchValue: string | RegExp,
+    replacer: (substring: string, ...args: any[]) => string
+  ): (v: string) => string;
+};
