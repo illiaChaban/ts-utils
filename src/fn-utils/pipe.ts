@@ -1,7 +1,8 @@
 import { NoInfer } from "../types";
 
 type UnknownFunction = (...params: unknown[]) => unknown;
-type Fn<A, B> = (this: void, a: NoInfer<A>) => B;
+// removed NoInfer due to some type issues with join/split
+type Fn<A, B> = (this: void, a: A) => B;
 
 export function flow<A extends unknown[], B>(
   ab: (this: void, ...args: A) => B
