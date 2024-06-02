@@ -22,3 +22,11 @@ export const startsWith = prototypeMethod("startsWith");
 export const toLowerCase = prototypeMethod("toLowerCase");
 /** Converts all the alphabetic characters in a string to uppercase. */
 export const toUpperCase = prototypeMethod("toUpperCase");
+
+/**
+ * A regular expression method that replaces matched substrings of a string. Called by the
+ * String.prototype.replace method.
+ */
+export const replace = prototypeMethod("replace");
+/** Replace all instances of a substring in a string, using a regular expression or search string. */
+export const replaceAll = prototypeMethod("replaceAll");
