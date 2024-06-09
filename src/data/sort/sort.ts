@@ -1,4 +1,4 @@
-import { NoInfer } from "../../types";
+import { Arr, NoInfer } from "../../types";
 
 /**
  * Sorts an array in place. (M for Mutating)
@@ -7,8 +7,8 @@ import { NoInfer } from "../../types";
  * value otherwise.
  */
 export const sortM =
-  <T>(campareFn: CompareFn<NoInfer<T>>) =>
-  (arr: T[]) =>
+  <T extends any[]>(campareFn: CompareFn<NoInfer<T>[number]>) =>
+  (arr: T) =>
     arr.sort(campareFn);
 
 /**
@@ -18,8 +18,8 @@ export const sortM =
  * value otherwise.
  */
 export const sort =
-  <T>(campareFn: CompareFn<NoInfer<T>>) =>
-  (arr: T[]) =>
+  <T extends Arr>(campareFn: CompareFn<NoInfer<T>[number]>) =>
+  (arr: T) =>
     [...arr].sort(campareFn);
 
 type CompareFn<T> = (a: T, b: T) => number;
