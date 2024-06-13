@@ -1,5 +1,3 @@
-import { NoInfer } from "../types";
-
 type UnknownFunction = (...params: unknown[]) => unknown;
 // removed NoInfer due to some type issues with join/split
 type Fn<A, B> = (this: void, a: A) => B;

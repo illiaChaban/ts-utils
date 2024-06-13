@@ -1,4 +1,4 @@
-import { Arr, NoInfer } from "../types";
+import { Arr } from "../types";
 
 export const reduce: Reduce =
   (...args: any[]) =>

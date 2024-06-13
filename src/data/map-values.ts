@@ -1,5 +1,3 @@
-import { NoInfer } from "../types";
-
 export const mapValues =
   <K extends string, T, Y>(map: (value: NoInfer<T>, key: NoInfer<K>) => Y) =>
   (obj: Record<K, T>): Record<K, Y> => {

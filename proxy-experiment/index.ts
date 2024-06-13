@@ -1,4 +1,4 @@
-import { NoInfer, pipe } from "../src";
+import { pipe } from "../src";
 
 const _proxy = new Proxy(
   {},

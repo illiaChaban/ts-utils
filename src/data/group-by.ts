@@ -1,6 +1,6 @@
 import { _, iif } from "../fn-utils";
 import { as, isString } from "../guards";
-import { Arr, NoInfer } from "../types";
+import { Arr } from "../types";
 import { each } from "./each-map";
 
 /** Like Object.groupBy but supports an array of keys */

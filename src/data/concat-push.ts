@@ -1,5 +1,5 @@
 import { _ } from "../fn-utils";
-import { Arr, FlattenTuple, NoInfer } from "../types";
+import { Arr, FlattenTuple } from "../types";
 
 /**
  * Creates a new array with items appended to the end of an array.

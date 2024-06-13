@@ -1,4 +1,4 @@
-import { Arr, NoInfer, ExtractTuple } from "../types";
+import { Arr, ExtractTuple } from "../types";
 
 export const some = ((predicate: any) => (arr: Arr) =>
   arr.some(predicate)) as Some;

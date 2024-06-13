@@ -1,4 +1,4 @@
-import { Arr, NoInfer } from "../../types";
+import { Arr } from "../../types";
 
 /**
  * Sorts an array in place. (M for Mutating)

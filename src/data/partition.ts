@@ -1,4 +1,4 @@
-import { Arr, NoInfer } from "../types";
+import { Arr } from "../types";
 
 export function partition<T, S extends T>(
   guard: (v: NoInfer<T>) => v is S

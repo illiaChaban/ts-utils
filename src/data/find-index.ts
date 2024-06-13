@@ -1,4 +1,4 @@
-import { Arr, NoInfer } from "../types";
+import { Arr } from "../types";
 import { prototypeMethod } from "./_internal";
 
 export const find = prototypeMethod("find") as {

@@ -1,4 +1,4 @@
-import { FalsyValues, NoInfer } from "../types";
+import { FalsyValues } from "../types";
 import { thru } from "./tap";
 
 export function iif<T, SubT extends T, A, B>(

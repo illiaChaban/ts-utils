@@ -8,8 +8,6 @@ export function flow(...fns: UnknownFunction[]): UnknownFunction {
     }, initialParams);
 }
 
-type NoInfer<A extends any> = [A][A extends any ? 0 : never];
-
 function pipe<const A>(a: A): A;
 function pipe<const A, B extends DetermineProxy<A>>(a: A, ab: B): A;
 function pipe<const A, B>(a: A, ab: (a: NoInfer<A>) => B): B;

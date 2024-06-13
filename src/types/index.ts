@@ -1,5 +1,4 @@
 export * from "./collection";
-export * from "./no-infer";
 export * from "./tuples";
 
 export type Nil = null | undefined;

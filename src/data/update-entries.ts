@@ -1,6 +1,6 @@
 import { entries, fromEntries, FromEntriesWithReadOnly } from ".";
 import { flow } from "../fn-utils";
-import { Entry, NoInfer, Obj } from "../types";
+import { Entry, Obj } from "../types";
 
 export const updateEntries = ((updater) =>
   flow(entries, updater as any, fromEntries)) as UpdateEntries;

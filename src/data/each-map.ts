@@ -1,5 +1,3 @@
-import { NoInfer } from "../types";
-
 /**
  * Performs the specified action for each element in an array.
  * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
