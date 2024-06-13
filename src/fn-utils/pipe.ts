@@ -1,6 +1,8 @@
 type UnknownFunction = (...params: unknown[]) => unknown;
 // removed NoInfer due to some type issues with join/split
-type Fn<A, B> = (this: void, a: A) => B;
+// and non-generic functions i.e. split(splitter: string) => (str: string) => string
+// for some reason adding NoInfer breaks it
+type Fn<A, B> = (a: A) => B;
 
 export function flow<A extends unknown[], B>(
   ab: (this: void, ...args: A) => B
