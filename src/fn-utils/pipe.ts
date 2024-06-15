@@ -149,5 +149,5 @@ export function pipe(value: unknown, ...fns: UnknownFunction[]): unknown {
   return fns.reduce((v, fn) => fn(v), value);
 }
 
-/** pipe alias */
+/** aliases */
 export { pipe as _ };

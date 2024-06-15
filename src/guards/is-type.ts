@@ -8,6 +8,7 @@ export const isTruthy = <T>(value: T): value is Truthy<T> => !!value;
 
 export const isNil = is(null, undefined);
 export const isValue = isNot(null, undefined);
+export const isDefined = isNot(undefined);
 
 export const isArray = Array.isArray as {
   <T>(v: T): v is ExtractIs<T, Arr>;
@@ -41,19 +42,19 @@ export const isValidDate = <T>(v: T): v is ExtractIs<T, Date> => {
   return isDate(v) && !Number.isNaN(v.getTime());
 };
 
-const v = 5 as 5 | "hello";
-if (isString(v)) {
-  v; // 'hello
-} else {
-  v; // 5
-}
+// const v = 5 as 5 | "hello";
+// if (isString(v)) {
+//   v; // 'hello
+// } else {
+//   v; // 5
+// }
 
 // isString(v) ? v : v
 
-const v1 = v as unknown;
-if (isString(v1)) {
-  v1; // string
-}
+// const v1 = v as unknown;
+// if (isString(v1)) {
+//   v1; // string
+// }
 
 // const x = pipe(
 //   "hello" as number | "hello",

@@ -1,5 +1,5 @@
 export const tap =
-  <T>(cb: (v: T) => any) =>
+  <T>(cb?: (v: T) => any) =>
   (v: T): T => {
     cb?.(v);
     return v;
