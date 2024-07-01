@@ -27,7 +27,24 @@ export const toUpperCase = prototypeMethod("toUpperCase");
  * A regular expression method that replaces matched substrings of a string. Called by the
  * String.prototype.replace method.
  */
-export const replace = prototypeMethod("replace");
+export const replace = prototypeMethod("replace") as any as {
+  /**
+   * Replaces text in a string, using a regular expression or search string.
+   * @param searchValue A string or regular expression to search for.
+   * @param replaceValue A string containing the text to replace. When the {@linkcode searchValue} is a `RegExp`, all matches are replaced if the `g` flag is set (or only those matches at the beginning, if the `y` flag is also present). Otherwise, only the first match of {@linkcode searchValue} is replaced.
+   */
+  (searchValue: string | RegExp, replaceValue: string): (str: string) => string;
+
+  /**
+   * Replaces text in a string, using a regular expression or search string.
+   * @param searchValue A string to search for.
+   * @param replacer A function that returns the replacement text.
+   */
+  (
+    searchValue: string | RegExp,
+    replacer: (substring: string, ...args: any[]) => string
+  ): (str: string) => string;
+};
 /** Replace all instances of a substring in a string, using a regular expression or search string. */
 export const replaceAll = prototypeMethod("replaceAll") as {
   /**
