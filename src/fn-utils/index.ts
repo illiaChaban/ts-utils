@@ -6,7 +6,7 @@ export * from "./tap";
 export * from "./ticker";
 export * from "./call";
 
-// use "memize" npm package for memoize function which is fast, supports multiple arguments by reference and small
+export * from "./debounce";
+export * from "./throttle";
 
-// use "debounce" npm package for debounce
-// use lodash.throttle npm package for throttle
+// use "memize" npm package for memoize function which is fast, supports multiple arguments by reference and small

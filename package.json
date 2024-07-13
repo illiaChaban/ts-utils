@@ -1,6 +1,6 @@
 {
   "name": "@illlia/ts-utils",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "TS utils",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -29,8 +29,13 @@
   "author": "illia.chaban.8@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^20.12.5",
     "typescript": "^5.4.5",
     "vitest": "^1.5.2"
+  },
+  "dependencies": {
+    "debounce": "^2.1.0",
+    "lodash.throttle": "^4.1.1"
   }
 }
