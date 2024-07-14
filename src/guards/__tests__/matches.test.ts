@@ -67,6 +67,7 @@ describe(matches.name, () => {
 
     if (_(deep, deepCheck)) {
       deep satisfies
+        | { one: { two: "hello" } }
         | {
             one: {
               two: "hello";
