@@ -9,6 +9,7 @@ export const isTruthy = <T>(value: T): value is Truthy<T> => !!value;
 export const isNil = is(null, undefined);
 export const isValue = isNot(null, undefined);
 export const isDefined = isNot(undefined);
+export const isBoolean = is(true, false);
 
 export const isArray = Array.isArray as {
   <T>(v: T): v is ExtractIs<T, Arr>;
@@ -18,7 +19,7 @@ export const isObject = <T>(v: T): v is ExtractIs<T, Obj> => {
   return v !== null && typeof v === "object" && !isArray(v);
 };
 export const isFunction = <T>(
-  v: T
+  v: T,
 ): v is ExtractIs<T, (...args: any[]) => any> => {
   return typeof v === "function";
 };
