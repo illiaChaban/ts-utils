@@ -1,25 +1,20 @@
 import { Arr, IsTuple } from "../types";
-import { prototypeMethod } from "./_internal";
 
 /**
  * Takes an integer value and returns the item at that index,
  * allowing for positive and negative integers.
  * Negative integers count back from the last item in the array.
  */
-export const at = prototypeMethod("at") as {
-  /**
-   * Takes an integer value and returns the item at that index,
-   * allowing for positive and negative integers.
-   * Negative integers count back from the last item in the array.
-   */
-  <T extends Arr | string, I extends number>(index: I): (
-    val: T
-  ) => [IsPositive<I>, IsTuple<T>, I] extends [true, true, keyof T]
+export const at =
+  <T extends Arr | string | ArrayLike<unknown>, I extends number>(index: I) =>
+  (
+    value: T,
+  ): [IsPositive<I>, IsTuple<T>, I] extends [true, true, keyof T]
     ? T[I]
     : [T["length"], I] extends [SupportedPositive, SupportedNegative]
     ? T[Subtract<T["length"], Abs<I>>]
-    : T[number] | undefined;
-};
+    : T[number] | undefined =>
+    index < 0 ? value[value.length + index] : value[index];
 
 type SupportedNegative = -1 | -2 | -3;
 
@@ -53,7 +48,7 @@ type Add<A extends number, B extends number> = Length<
 
 type Subtract<A extends number, B extends number> = BuildTuple<A> extends [
   ...infer U,
-  ...BuildTuple<B>
+  ...BuildTuple<B>,
 ]
   ? Length<U>
   : never;
