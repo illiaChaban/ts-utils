@@ -25,8 +25,8 @@ export * from "./uniq";
 export * from "./update-entries";
 export * from "./map-values";
 export * from "./splice";
+export * from "./to";
 
-// toArray?
 // mapValues ?
 
 // simplify API ?
