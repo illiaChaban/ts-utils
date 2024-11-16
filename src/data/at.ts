@@ -59,7 +59,7 @@ export const first = <T extends Arr | string | ArrayLike<unknown>>(
   value: T,
 ): T extends readonly [infer X, ...any[]]
   ? X
-  : T extends readonly any[]
+  : T extends ArrayLike<unknown>
   ? T[0] | undefined
   : undefined => value[0] as any;
 
@@ -67,6 +67,6 @@ export const last = <T extends Arr | string | ArrayLike<unknown>>(
   value: T,
 ): T extends readonly [...any[], infer X]
   ? X
-  : T extends readonly any[]
+  : T extends ArrayLike<unknown>
   ? T[number] | undefined
   : undefined => value[value.length - 1] as any;

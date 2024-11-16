@@ -11,6 +11,9 @@ describe(at.name, () => {
 
     _([] as number[], at(0)) satisfies number | undefined;
     _([] as { id: string }[], at(-1)) satisfies { id: string } | undefined;
+    _([] as any as HTMLAllCollection, at(-1), (x) => x) satisfies
+      | Element
+      | undefined;
   });
 });
 
@@ -19,6 +22,9 @@ describe(first.name, () => {
     expect(_([], first) satisfies undefined).toBe(undefined);
     expect(_([1, 2, 3], first) satisfies 1).toBe(1);
     _([] as number[], first) satisfies number | undefined;
+    _([] as any as HTMLAllCollection, first, (x) => x) satisfies
+      | Element
+      | undefined;
   });
 });
 
@@ -27,5 +33,8 @@ describe(last.name, () => {
     expect(_([], last) satisfies undefined).toBe(undefined);
     expect(_([1, 2, 3], last) satisfies 3).toBe(3);
     _([] as number[], last) satisfies number | undefined;
+    _([] as any as HTMLAllCollection, last, (x) => x) satisfies
+      | Element
+      | undefined;
   });
 });
