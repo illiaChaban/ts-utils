@@ -1,3 +1,4 @@
+import { _ } from "../fn-utils";
 import { Arr, IsTuple } from "../types";
 
 /**
@@ -6,8 +7,8 @@ import { Arr, IsTuple } from "../types";
  * Negative integers count back from the last item in the array.
  */
 export const at =
-  <T extends Arr | string | ArrayLike<unknown>, I extends number>(index: I) =>
-  (
+  <const I extends number>(index: I) =>
+  <T extends Arr | string | ArrayLike<unknown>>(
     value: T,
   ): [IsPositive<I>, IsTuple<T>, I] extends [true, true, keyof T]
     ? T[I]
@@ -54,3 +55,19 @@ type Subtract<A extends number, B extends number> = BuildTuple<A> extends [
   : never;
 
 type IsPositive<N extends number> = `${N}` extends `-${number}` ? false : true;
+
+export const first = <T extends Arr | string | ArrayLike<unknown>>(
+  value: T,
+): T extends readonly [infer X, ...any[]]
+  ? X
+  : T extends readonly any[]
+  ? T[0] | undefined
+  : undefined => value[0] as any;
+
+export const last = <T extends Arr | string | ArrayLike<unknown>>(
+  value: T,
+): T extends readonly [...any[], infer X]
+  ? X
+  : T extends readonly any[]
+  ? T[number] | undefined
+  : undefined => value[value.length - 1] as any;
