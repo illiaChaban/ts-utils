@@ -5,29 +5,29 @@ type UnknownFunction = (...params: unknown[]) => unknown;
 type Fn<A, B> = (a: A) => B;
 
 export function flow<A extends unknown[], B>(
-  ab: (this: void, ...args: A) => B
+  ab: (this: void, ...args: A) => B,
 ): (...args: A) => B;
 export function flow<A extends unknown[], B, C>(
   ab: (this: void, ...args: A) => B,
-  bc: Fn<B, C>
+  bc: Fn<B, C>,
 ): (...args: A) => C;
 export function flow<A extends unknown[], B, C, D>(
   ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
-  cd: Fn<C, D>
+  cd: Fn<C, D>,
 ): (...args: A) => D;
 export function flow<A extends unknown[], B, C, D, E>(
   ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
-  de: Fn<D, E>
+  de: Fn<D, E>,
 ): (...args: A) => E;
 export function flow<A extends unknown[], B, C, D, E, F>(
   ab: (this: void, ...args: A) => B,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
-  ef: Fn<E, F>
+  ef: Fn<E, F>,
 ): (...args: A) => F;
 export function flow<A extends unknown[], B, C, D, E, F, G>(
   ab: (this: void, ...args: A) => B,
@@ -35,7 +35,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G>(
   cd: Fn<C, D>,
   de: Fn<D, E>,
   ef: Fn<E, F>,
-  fg: Fn<F, G>
+  fg: Fn<F, G>,
 ): (...args: A) => G;
 export function flow<A extends unknown[], B, C, D, E, F, G, H>(
   ab: (this: void, ...args: A) => B,
@@ -44,7 +44,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G, H>(
   de: Fn<D, E>,
   ef: Fn<E, F>,
   fg: Fn<F, G>,
-  gh: Fn<G, H>
+  gh: Fn<G, H>,
 ): (...args: A) => H;
 export function flow<A extends unknown[], B, C, D, E, F, G, H, I>(
   ab: (this: void, ...args: A) => B,
@@ -54,7 +54,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G, H, I>(
   ef: Fn<E, F>,
   fg: Fn<F, G>,
   gh: Fn<G, H>,
-  hi: Fn<H, I>
+  hi: Fn<H, I>,
 ): (...args: A) => I;
 export function flow<A extends unknown[], B, C, D, E, F, G, H, I, J>(
   ab: (this: void, ...args: A) => B,
@@ -65,7 +65,7 @@ export function flow<A extends unknown[], B, C, D, E, F, G, H, I, J>(
   fg: Fn<F, G>,
   gh: Fn<G, H>,
   hi: Fn<H, I>,
-  ij: Fn<I, J>
+  ij: Fn<I, J>,
 ): (...args: A) => J;
 export function flow(
   first: UnknownFunction,
@@ -78,7 +78,7 @@ export function flow(
 export function pipe<const A>(a: A): A;
 export function pipe<const A, B extends A>(
   a: A,
-  ab: (a: NoInfer<A>) => a is B
+  ab: (a: NoInfer<A>) => a is B,
 ): a is B;
 export function pipe<const A, B>(a: A, ab: Fn<A, B>): B;
 export function pipe<const A, B, C>(a: A, ab: Fn<A, B>, bc: Fn<B, C>): C;
@@ -86,14 +86,14 @@ export function pipe<const A, B, C, D>(
   a: A,
   ab: Fn<A, B>,
   bc: Fn<B, C>,
-  cd: Fn<C, D>
+  cd: Fn<C, D>,
 ): D;
 export function pipe<const A, B, C, D, E>(
   a: A,
   ab: Fn<A, B>,
   bc: Fn<B, C>,
   cd: Fn<C, D>,
-  de: Fn<D, E>
+  de: Fn<D, E>,
 ): E;
 export function pipe<const A, B, C, D, E, F>(
   a: A,
@@ -101,7 +101,7 @@ export function pipe<const A, B, C, D, E, F>(
   bc: Fn<B, C>,
   cd: Fn<C, D>,
   de: Fn<D, E>,
-  ef: Fn<E, F>
+  ef: Fn<E, F>,
 ): F;
 export function pipe<const A, B, C, D, E, F, G>(
   a: A,
@@ -110,7 +110,7 @@ export function pipe<const A, B, C, D, E, F, G>(
   cd: Fn<C, D>,
   de: Fn<D, E>,
   ef: Fn<E, F>,
-  fg: Fn<F, G>
+  fg: Fn<F, G>,
 ): G;
 export function pipe<const A, B, C, D, E, F, G, H>(
   a: A,
@@ -120,7 +120,7 @@ export function pipe<const A, B, C, D, E, F, G, H>(
   de: Fn<D, E>,
   ef: Fn<E, F>,
   fg: Fn<F, G>,
-  gh: Fn<G, H>
+  gh: Fn<G, H>,
 ): H;
 export function pipe<const A, B, C, D, E, F, G, H, I>(
   a: A,
@@ -131,7 +131,7 @@ export function pipe<const A, B, C, D, E, F, G, H, I>(
   ef: Fn<E, F>,
   fg: Fn<F, G>,
   gh: Fn<G, H>,
-  hi: Fn<H, I>
+  hi: Fn<H, I>,
 ): I;
 export function pipe<const A, B, C, D, E, F, G, H, I, J>(
   a: A,
@@ -143,7 +143,7 @@ export function pipe<const A, B, C, D, E, F, G, H, I, J>(
   fg: Fn<F, G>,
   gh: Fn<G, H>,
   hi: Fn<H, I>,
-  ij: Fn<I, J>
+  ij: Fn<I, J>,
 ): J;
 export function pipe(value: unknown, ...fns: UnknownFunction[]): unknown {
   return fns.reduce((v, fn) => fn(v), value);
@@ -151,3 +151,4 @@ export function pipe(value: unknown, ...fns: UnknownFunction[]): unknown {
 
 /** aliases */
 export { pipe as _ };
+export { flow as __ };
