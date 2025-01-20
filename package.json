@@ -1,6 +1,6 @@
 {
   "name": "@illlia/ts-utils",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "TS utils",
   "main": "dist/index.js",
   "types": "src/index.ts",
