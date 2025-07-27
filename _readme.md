@@ -2,6 +2,7 @@ To publish package:
 
 ```
 npm login
+npm run build
 npm publish
 ```
 
