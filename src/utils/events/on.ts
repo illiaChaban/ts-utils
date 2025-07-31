@@ -1,4 +1,4 @@
-import { OmitKnown } from "../types";
+import { OmitKnown } from "../../types";
 
 /**
  * A function that cleans up event listeners when called
@@ -32,12 +32,12 @@ type UseCapture = boolean;
  * // With options
  * const cleanup = on(window, 'scroll', handleScroll, { passive: true });
  */
-export function on<K extends keyof WindowEventMap, Options extends UseCapture | AddEventListenerOptions>(
+export function on<K extends keyof WindowEventMap>(
   element: Window,
   event: K,
   callback: (ev: WindowEventMap[K]) => void,
-  options?: Options
-): Options extends { signal: AbortSignal } ? void : Cleanup;
+  options?: UseCapture | AddEventListenerOptions
+): Cleanup;
 
 /**
  * Attaches an event listener to a Document object
@@ -61,12 +61,12 @@ export function on<K extends keyof WindowEventMap, Options extends UseCapture | 
  * // With options
  * const cleanup = on(window, 'scroll', handleScroll, { passive: true });
  */
-export function on<K extends keyof DocumentEventMap, Options extends UseCapture | AddEventListenerOptions>(
+export function on<K extends keyof DocumentEventMap>(
   element: Document,
   event: K,
   callback: (ev: DocumentEventMap[K]) => void,
-  options?: Options
-): Options extends { signal: AbortSignal } ? void : Cleanup;
+  options?: UseCapture | AddEventListenerOptions
+): Cleanup;
 
 /**
  * Attaches an event listener to an HTMLElement object
@@ -90,12 +90,12 @@ export function on<K extends keyof DocumentEventMap, Options extends UseCapture 
  * // With options
  * const cleanup = on(window, 'scroll', handleScroll, { passive: true });
  */
-export function on<K extends keyof HTMLElementEventMap, Options extends UseCapture | AddEventListenerOptions>(
+export function on<K extends keyof HTMLElementEventMap>(
   element: HTMLElement,
   event: K,
   callback: (ev: HTMLElementEventMap[K]) => void,
-  options?: Options
-): Options extends { signal: AbortSignal } ? void : Cleanup;
+  options?: UseCapture | AddEventListenerOptions
+): Cleanup;
 
 /**
  * Attaches an event listener to an Element object 
@@ -119,12 +119,12 @@ export function on<K extends keyof HTMLElementEventMap, Options extends UseCaptu
  * // With options
  * const cleanup = on(window, 'scroll', handleScroll, { passive: true });
  */
-export function on<K extends keyof ElementEventMap, Options extends UseCapture | AddEventListenerOptions>(
+export function on<K extends keyof ElementEventMap>(
   element: Element,
   event: K,
   callback: (ev: ElementEventMap[K]) => void,
-  options?: Options
-): Options extends { signal: AbortSignal } ? void : Cleanup;
+  options?: UseCapture | AddEventListenerOptions
+): Cleanup;
 
 /**
  * Fallback for attaching event listeners to any EventTarget with custom events
@@ -148,12 +148,12 @@ export function on<K extends keyof ElementEventMap, Options extends UseCapture |
  * // With options
  * const cleanup = on(window, 'scroll', handleScroll, { passive: true });
  */
-export function on<Options extends UseCapture | AddEventListenerOptions>(
+export function on(
   element: EventTarget,
   event: string,
   callback: EventListenerOrEventListenerObject,
-  options?: Options
-): Options extends { signal: AbortSignal } ? void : Cleanup;
+  options?: UseCapture | AddEventListenerOptions
+): Cleanup;
 
 /**
  * Attaches an event listener to any EventTarget
@@ -183,25 +183,10 @@ export function on(
   callback: EventListenerOrEventListenerObject,
   options?: UseCapture | AddEventListenerOptions
 ): Cleanup | void {
-  let cleanup: Cleanup | undefined;
-
-  let mergedOptions: AddEventListenerOptions;
-
-  // if outside signal is provided, use it and don't return cleanup function
-  if (typeof options === 'object' && options.signal) {
-    mergedOptions = options;
-  } else {
-    const _options = typeof options === 'boolean' ? { capture: options } : options;
-    const controller = new AbortController();
-    cleanup = () => controller.abort();
-    mergedOptions = { ..._options, signal: controller.signal };
-  }
-
-  element.addEventListener(event, callback, mergedOptions);
-
-  // Return a cleanup function that aborts the controller
-  return cleanup;
+  element.addEventListener(event, callback, options);
+  return () => element.removeEventListener(event, callback, options);
 }
 
 export const onEvent = on
 export const listen = on
+

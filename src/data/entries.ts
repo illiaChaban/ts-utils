@@ -14,7 +14,7 @@ export const entries = <T extends Collection>(
 ): Entry<T>[] =>
   isArray(collection)
     ? ([...collection.entries()] as any)
-    : Object.entries(collection);
+    : Object.entries(collection) as any;
 
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };

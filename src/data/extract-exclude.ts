@@ -1,12 +1,12 @@
 export const extract =
   <T>(...values: T[]) =>
-  <Y>(
-    value: Extract<Y, T> extends never
-      ? // custom TS error message
+    <Y>(
+      value: Extract<Y, T> extends never
+        ? // custom TS error message
         "Type of passed value should have something in common with values to extract"
-      : Y
-  ): Y extends T ? Y : null =>
-    values.includes(value as any) ? (value as any) : null;
+        : Y
+    ): Y extends T ? Y : null =>
+      values.includes(value as any) ? (value as any) : (null as any);
 
 // declare const a: "a" | "b";
 // declare const aa: "a";
@@ -19,13 +19,13 @@ export const extract =
 
 export const exclude =
   <T>(...values: T[]) =>
-  <Y>(
-    value: Extract<Y, T> extends never
-      ? // custom TS error message
+    <Y>(
+      value: Extract<Y, T> extends never
+        ? // custom TS error message
         "Type of passed value should have something in common with values to exclude"
-      : Y
-  ): Y extends T ? null : Y =>
-    values.includes(value as any) ? null : (value as any);
+        : Y
+    ): Y extends T ? null : Y =>
+      values.includes(value as any) ? (null as any) : (value as any);
 
 // declare const a: "a" | "b";
 // declare const aa: "a";
