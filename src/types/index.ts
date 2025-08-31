@@ -1,5 +1,6 @@
 export * from "./collection";
 export * from "./tuples";
+export * from "./utils";
 
 export type Nil = null | undefined;
 

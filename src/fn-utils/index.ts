@@ -5,6 +5,7 @@ export * from "./pipe";
 export * from "./tap";
 export * from "./ticker";
 export * from "./call";
+export * from "./toggle";
 
 export * from "./debounce";
 export * from "./throttle";
