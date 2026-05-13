@@ -1,9 +1,9 @@
 {
   "name": "@illlia/ts-utils",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "TS utils",
   "main": "dist/index.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
